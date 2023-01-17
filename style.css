@@ -1,5 +1,7 @@
 :root {
     --defaultFont: sanserif;
+    --opacity: 0.5;
+    --angle: 60deg;
 }
 
 body, html {
@@ -19,19 +21,64 @@ body, html {
     height: 97.5%;
     width: 97.5%;
     background-color: #B0E0E6;
-    border: 1px solid white;
-    border-radius: 2em;
-
+    border-radius: 2rem;
+    border: 0.3rem dashed;
+    
     display: grid;
     grid-template-rows: 17.5% 80%;
     grid-template-columns: 65%;
     justify-content: center;
-
-    background-image: url(./img/nightsky.jpg);
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+    
+    /* Paints an image in the border */
+    border-image: conic-gradient(
+        from var(--angle),
+        black 0deg 90deg,
+        #a2fdf9 160deg 180deg,
+        black 180deg 270deg,
+        black 270deg 360deg
+        )
+        1 stretch;
+        background: rgb(255, 255, 255 / var(--opacity));
+        
+        /* background img */
+        background-image: url(./img/nightsky.jpg);
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        
 }
+
+/* Animations */
+@supports (background: paint(houdini)) {
+    @property --opacity {
+      syntax: "<number>";
+      initial-value: 0.5;
+      inherits: false;
+    }
+  
+    @property --angle {
+      syntax: "<angle>";
+      initial-value: 0deg;
+      inherits: false;
+    }
+  
+    @keyframes opacityChange {
+      to {
+        --opacity: .75;
+      }
+    }
+  
+    @keyframes rotate {
+      to {
+        --angle: 360deg;
+      }
+    }
+}
+
+
+ .main-container {
+    animation: rotate 6s linear infinite, opacityChange 4s infinite alternate;
+ }
 
 .header {
     background: linear-gradient(rgba(178, 255, 255, 1), rgba(0, 13, 28, 0));
