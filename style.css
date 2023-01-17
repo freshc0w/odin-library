@@ -5,7 +5,7 @@
 }
 
 body, html {
-    background: linear-gradient( rgb(2, 59, 124), #001529);
+    background: linear-gradient( rgb(2, 59, 124), rgb(0, 21, 41));
     /* background-color: #002244; */
     margin: 0;
     padding: 0;
@@ -81,27 +81,109 @@ body, html {
     font-weight: bold;
 }
 
+.header > div:last-child {
+    display: flex;
+    gap: 2rem;
+}
+
 .header > div:last-child > * {
     cursor: pointer;
 }
 
-.log-in {
+button {
+    transform: scale(0.9);
     padding: 0.7rem 2rem;
     border-radius: 2rem;
     border: 0;
     font-size: 1.1rem;
-    color: #d8d103;
-    border: 3px solid #d4cd05;
     background-color: rgb(15, 15, 15);
     box-shadow: 0 0 5px white;
 }
 
-.log-in:hover {
+button:hover {
     background-color: rgba(25, 25, 25, .6);
     color: rgb(240, 240, 240);
     border: 2.5px solid whitesmoke;
     transform: scale(1.05);
+}
+
+.log-in {
+    color: #d8d103;
+    border: 3px solid #d4cd05;
+}
+.log-in:hover {
     box-shadow: 0 0 5px white,
     0 0 10px rgb(199, 221, 2),
     0 0 15px white;
 }
+
+.sign-up {
+    color:aqua;
+    border: 3px solid aqua;
+}
+.sign-up:hover {
+    box-shadow: 0 0 5px white,
+    0 0 10px aqua,
+    0 0 15px white;
+}
+
+.addBtn {
+    color: rgb(245, 116, 137);
+    border: 3px solid rgb(245, 116, 137);
+}
+.addBtn:hover {
+    box-shadow: 0 0 5px white,
+    0 0 10px rgb(245, 116, 137),
+    0 0 15px white;
+}
+
+
+.content {
+    max-height: 100%;
+    overflow: auto;
+    padding: 3.5rem;
+
+    display: grid;
+    grid-template-columns: repeat(3, 20%);
+    row-gap: 3rem;
+    column-gap: 5rem;
+    grid-auto-flow: row;
+    justify-content: space-evenly;
+    place-items: center;
+    /* justify-items: center; */
+    overflow: auto;
+    overflow-x: hidden;
+}
+
+.card {
+    height: 17rem;
+    width: 20rem;
+    border: 2px white solid;
+    border-radius: 1rem;
+    padding: 10px;
+
+    /* Glass effect */
+    background: rgba(230, 255, 255, .35);
+    box-shadow: 0 4px 30px rgba(255,255, 255, 0.4);
+    backdrop-filter: blur(4.6px);
+    border: 1px solid rgba(255, 255, 255, 0.38);
+}
+
+/* scrollbar styling */
+*::-webkit-scrollbar {
+    width: 16px;
+  }
+
+  *::-webkit-scrollbar-track {
+    background-color: rgba(0, 21, 41, 0.1);
+    border-radius: 3em;
+    box-shadow: 0 0 2px rgba(245, 245, 245, .8);
+    
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 21, 41, 0.5);
+    border-radius: 10px;
+    border: 1px solid #ffffff;
+    box-shadow: 0 0 5px whitesmoke;
+  }
