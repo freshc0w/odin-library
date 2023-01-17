@@ -1,0 +1,60 @@
+:root {
+    --defaultFont: sanserif;
+}
+
+body, html {
+    background-color: #E6B6B0;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+    height: 100%;
+    width: 100vw;
+    display: grid;
+    grid-template: 100% / auto;
+    place-items: center;
+}
+
+.main-container {
+    height: 97.5%;
+    width: 97.5%;
+    background-color: #B0E0E6;
+    border: 4px solid #FAFA33;
+    border-radius: 2em;
+
+    display: grid;
+    grid-template-rows: 15% 80%;
+    grid-template-columns: 70%;
+    justify-content: center;
+}
+
+.header {
+    background-color: whitesmoke;
+    border-bottom-left-radius: 2em;
+    border-bottom-right-radius: 2em;
+    border: 4px solid #FAFA33;
+    border-top: 0;
+    box-shadow: 0 5px 5px white,
+    0 2px 7px white;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 3.5rem;
+}
+
+.header > div:first-child {
+    font-size: 3rem;
+    font-weight: bold;
+}
+
+.header > div:last-child > * {
+    cursor: pointer;
+}
+
+.log-in {
+    padding: 0.7rem 1.5rem;
+    border-radius: 2rem;
+    border: 0;
+    font-size: 1.1rem;
+}
