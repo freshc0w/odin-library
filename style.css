@@ -26,6 +26,10 @@ body, html {
     grid-template-rows: 15% 80%;
     grid-template-columns: 70%;
     justify-content: center;
+
+    background-image: url(./img/starry-night.jfif);
+    /* background-size: cover; */
+    background-repeat: no-repeat
 }
 
 .header {
