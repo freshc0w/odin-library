@@ -5,7 +5,8 @@
 }
 
 body, html {
-    background-color: #002244;
+    background: linear-gradient( rgb(2, 59, 124), #001529);
+    /* background-color: #002244; */
     margin: 0;
     padding: 0;
     border: 0;
@@ -20,9 +21,7 @@ body, html {
 .main-container {
     height: 97.5%;
     width: 97.5%;
-    background-color: #B0E0E6;
-    border-radius: 2rem;
-    border: 0.3rem dashed;
+    border: 0.2rem solid transparent;
     
     display: grid;
     grid-template-rows: 17.5% 80%;
@@ -32,42 +31,29 @@ body, html {
     /* Paints an image in the border */
     border-image: conic-gradient(
         from var(--angle),
-        black 0deg 90deg,
+        rgba(0, 0, 0, 0) 0deg 90deg,
         #a2fdf9 160deg 180deg,
-        black 180deg 270deg,
-        black 270deg 360deg
+        rgba(0, 0, 0, 0) 180deg 270deg,
+        #a2fdf9  340deg 360deg
         )
         1 stretch;
-        background: rgb(255, 255, 255 / var(--opacity));
-        
-        /* background img */
-        background-image: url(./img/nightsky.jpg);
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
+
+    /* background img */
+    background-image: url(./img/nightsky.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
         
 }
 
 /* Animations */
 @supports (background: paint(houdini)) {
-    @property --opacity {
-      syntax: "<number>";
-      initial-value: 0.5;
-      inherits: false;
-    }
-  
     @property --angle {
       syntax: "<angle>";
       initial-value: 0deg;
       inherits: false;
     }
-  
-    @keyframes opacityChange {
-      to {
-        --opacity: .75;
-      }
-    }
-  
+   
     @keyframes rotate {
       to {
         --angle: 360deg;
@@ -75,9 +61,8 @@ body, html {
     }
 }
 
-
  .main-container {
-    animation: rotate 6s linear infinite, opacityChange 4s infinite alternate;
+    animation: rotate 5s linear infinite
  }
 
 .header {
@@ -101,8 +86,22 @@ body, html {
 }
 
 .log-in {
-    padding: 0.7rem 1.5rem;
+    padding: 0.7rem 2rem;
     border-radius: 2rem;
     border: 0;
     font-size: 1.1rem;
+    color: #d8d103;
+    border: 3px solid #d4cd05;
+    background-color: rgb(15, 15, 15);
+    box-shadow: 0 0 5px white;
+}
+
+.log-in:hover {
+    background-color: rgba(25, 25, 25, .6);
+    color: rgb(240, 240, 240);
+    border: 2.5px solid whitesmoke;
+    transform: scale(1.05);
+    box-shadow: 0 0 5px white,
+    0 0 10px rgb(199, 221, 2),
+    0 0 15px white;
 }
