@@ -22,20 +22,41 @@ function drawGrid() {
         content.removeChild(content.firstChild)
     }
 
+    // draw each card.
     for(let i = 0; i < myLibrary.length; i++) {
         let card = document.createElement('div')
         card.classList.add('card');
-        card.textContent = myLibrary[i].name
+
+        let paraTitle = document.createElement('p');
+        paraTitle.textContent = `Author: ${myLibrary[i].name}`;
+        card.appendChild(paraTitle);
+
+        let paraAuthor = document.createElement('p');
+        paraAuthor.textContent = `Title: ${myLibrary[i].author}`;
+        card.appendChild(paraAuthor);
+
+        let paraPages = document.createElement('p');
+        paraPages.textContent = `Pages: ${myLibrary[i].pages}`;
+        card.appendChild(paraPages);
+
+        let paraRead = document.createElement('p');
+        // If true, status is read. Otherwise unread.
+        myLibrary[i].read ? paraRead.textContent = `Status: Finished` : paraRead.textContent = `Status: Unfinished`;
+        card.appendChild(paraRead);
+
         content.insertBefore(card, content.firstChild);
     }
 }
 
-function Book(name) {
+function Book(name, author, pages, read) {
     this.name = name
+    this.author = author
+    this.pages = pages 
+    this.read = read
 }
 
-function addBookToLibrary(name) {
-    let book = new Book(name)
+function addBookToLibrary(name, author, pages, read) {
+    let book = new Book(name, author, pages, read)
     myLibrary.push(book)
     console.log(myLibrary)
 }
@@ -49,7 +70,12 @@ submitInfo)
 
 function submitInfo(event) {
     let bookTitle = document.getElementById('title').value;
-    addBookToLibrary(bookTitle)
+    let author = document.getElementById('author').value;
+    let pages = document.getElementById('pages').value;
+    let read = document.getElementById('read').checked; // true or false
+
+
+    addBookToLibrary(bookTitle, author, pages, read)
     drawGrid();
     form.style.visibility = 'hidden'; 
 
@@ -58,6 +84,18 @@ function submitInfo(event) {
 
 // Pop up form.
 addBtn.addEventListener("click", () => {
+    let elements = document.getElementsByTagName("input");
+
+    // Clear all prior inputs.
+    for(let i=0; i < elements.length; i++) {
+        if (elements[i].type == 'text') {
+            elements[i].value = '';
+        } else if(elements[i].type == 'number') {
+            elements[i].value = 0;
+        } else if(elements[i].type == 'checkbox') {
+            elements[i].checked = false;
+        }
+    }
     form.style.visibility = 'visible';
 });
 
