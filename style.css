@@ -6,6 +6,16 @@
     --formHeight: 600px;
 }
 
+@font-face {
+    font-family: 'Header Font';
+    src: url(./font/Rochester/Rochester-Regular.ttf)
+}
+
+@font-face {
+    font-family: 'Body Font';
+    src: url(./font/Leckerli_One/LeckerliOne-Regular.ttf)
+}
+
 body, html {
     background: linear-gradient( rgb(2, 59, 124), rgb(0, 21, 41));
     /* background-color: #002244; */
@@ -81,8 +91,12 @@ body, html {
 }
 
 .header > div:first-child {
-    font-size: 3rem;
+    font-size: 4rem;
     font-weight: bold;
+    font-family: 'Header Font';
+    font-weight: bold;
+    letter-spacing: 10px;
+    text-shadow: 3px 3px 10px whitesmoke;
 }
 
 .header > div:last-child {
@@ -167,13 +181,33 @@ body, html {
     width: 20rem;
     border: 2px white solid;
     border-radius: 1rem;
-    padding: 10px;
+    padding: 0.5rem 2px;
+    font-family: 'Body Font';
+    font-size: 1.38rem;
+    line-height: 0;
+    color: rgb(25, 25, 25);
+    font-weight: 500;
+    overflow-wrap:break-word;
 
     /* Glass effect */
-    background: rgba(230, 255, 255, .35);
+    background: rgba(230, 255, 255, .325);
     box-shadow: 0 4px 30px rgba(255,255, 255, 0.4);
     backdrop-filter: blur(4.6px);
     border: 1px solid rgba(255, 255, 255, 0.38);
+}
+
+.card:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 30px rgba(178, 255, 255, 0.8);
+    backdrop-filter: blur(4.6px);
+    background: rgba(235, 255, 255, 0.6)
+}
+
+p {
+    line-height: 25px;
+    margin: 10px;
+    text-shadow: 0 0 8px rgba(224, 113, 99, 0.4);
+
 }
 
 /* scrollbar styling */
