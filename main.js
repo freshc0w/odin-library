@@ -1,5 +1,6 @@
 const addBtn = document.querySelector('.addBtn');
-const content = document.querySelector('.content')
+const content = document.querySelector('.content');
+const form = document.querySelector('.input');
 let myLibrary = [];
 
 // function addCard() {
@@ -10,6 +11,11 @@ let myLibrary = [];
 //     card.textContent = 'Something5';
 //     content.insertBefore(card, content.firstChild);
 // }
+
+// Pop up form.
+addBtn.addEventListener("click", () => {
+    form.style.visibility = 'visible';
+})
 
 function drawGrid() {
     for(let i = 0; i < myLibrary.length; i++) {

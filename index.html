@@ -20,10 +20,25 @@
         </div>
         <div class="content">
             <div class="card">Something1</div>
-            <div class="card">Something2</div>
-            <div class="card">Something3</div>
-            <div class="card">Something4</div>
-        </div>
+            <form class="input">
+                <!-- Collecting user input. -->
+                <div>Add new book</div>
+                <label for="title"></label>
+                <input type="text" placeholder="Title" id="title" name="title">
+                <label for="author"></label>
+                <input type="text" placeholder="Author" id="author" name="author">
+                <label for="pages"></label>
+                <input type="text" placeholder="Pages" id="pages" name="pages">
+                <div class="read-check">
+                    <label for="read">Have you read it?</label>
+                    <input type="checkbox" id="read" name="read">
+                </div>
+                <button type="submit">Submit</button>
+
+
+                
+        
+            </form>
     </div>
 </body>
 </html>
