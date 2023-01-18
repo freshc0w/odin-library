@@ -28,15 +28,15 @@ function drawGrid() {
         card.classList.add('card');
 
         let paraTitle = document.createElement('p');
-        paraTitle.textContent = `Author: ${myLibrary[i].name}`;
+        paraTitle.textContent = `Title: "${myLibrary[i].name}"`;
         card.appendChild(paraTitle);
 
         let paraAuthor = document.createElement('p');
-        paraAuthor.textContent = `Title: ${myLibrary[i].author}`;
+        paraAuthor.textContent = `Author: "${myLibrary[i].author}"`;
         card.appendChild(paraAuthor);
 
         let paraPages = document.createElement('p');
-        paraPages.textContent = `Pages: ${myLibrary[i].pages}`;
+        paraPages.textContent = `Pages: "${myLibrary[i].pages}"`;
         card.appendChild(paraPages);
 
         let paraRead = document.createElement('p');
@@ -107,5 +107,10 @@ function closeForm(event) {
     form.style.visibility = 'hidden';
     event.preventDefault();
 }
+addBookToLibrary("Mistborn", "Brandon Sanderson", 550, true)
+addBookToLibrary("Mistborn", "Brandon Sanderson", 550, true)
+addBookToLibrary("Mistborn", "Brandon Sanderson", 550, true)
+addBookToLibrary("Mistborn", "Brandon Sanderson", 550, true)
+drawGrid()
 
 
