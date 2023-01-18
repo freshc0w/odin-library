@@ -20,15 +20,15 @@
         </div>
         <div class="content">
             <form class="input">
-                
+
                 <!-- Collecting user input. -->
                 <div>Add new book</div>
                 <label for="title"></label>
-                <input type="text" placeholder="Title" id="title" name="title">
+                <input type="text" placeholder="Title" id="title" name="title" required>
                 <label for="author"></label>
-                <input type="text" placeholder="Author" id="author" name="author">
+                <input type="text" placeholder="Author" id="author" name="author" required>
                 <label for="pages"></label>
-                <input type="text" placeholder="Pages" id="pages" name="pages">
+                <input type="number" placeholder="Pages" id="pages" name="pages" value="0">
                 <div class="read-check">
                     <label for="read">Have you read it?</label>
                     <input type="checkbox" id="read" name="read">
