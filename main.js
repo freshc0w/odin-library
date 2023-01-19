@@ -44,10 +44,10 @@ function drawGrid() {
         myLibrary[i].read ? paraRead.textContent = `Status: Finished` : paraRead.textContent = `Status: Unfinished`;
         card.appendChild(paraRead);
 
-        // Add btns
+        // Add removebtn
         let removeBtn = document.createElement('button');
         removeBtn.classList.add('removeBtn');
-        removeBtn.textContent = 'Remove book'
+        removeBtn.textContent = 'Remove book';
         
         function removeCard() {
             myLibrary.splice(i, 1);
@@ -56,6 +56,18 @@ function drawGrid() {
         removeBtn.addEventListener("click", removeCard)
         
         card.appendChild(removeBtn)
+
+        // Add readBtn 
+        let readBtn = document.createElement('button');
+        readBtn.classList.add('readBtn');
+        readBtn.textContent = 'Read status';
+
+        function changeReadStatus() {
+            myLibrary[i].read = !myLibrary[i].read;
+            drawGrid();
+        }
+        readBtn.addEventListener("click", changeReadStatus)
+        card.appendChild(readBtn);
 
         content.insertBefore(card, content.firstChild);
     }
