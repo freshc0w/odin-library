@@ -4,6 +4,10 @@
     --angle: 60deg;
     --formWidth: 450px;
     --formHeight: 600px;
+    --glow-color: rgb(217, 176, 255);
+    --glow-spread-color: rgba(191, 123, 255, 0.781);
+    --enhanced-glow-color: rgb(231, 206, 255);
+    --btn-color: rgb(100, 61, 136);
 }
 
 @font-face {
@@ -160,6 +164,7 @@ body, html {
 }
 
 .content {
+    /* position: relative; */
     max-height: 100%;
     overflow: auto;
     padding: 3.5rem;
@@ -283,7 +288,18 @@ p {
     box-shadow: 0 0 5px whitesmoke;
   }
 
+  
 /* Collect user input  */
+
+#page-mask {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    background-color: rgba(0,0,0,1);
+  }
+
 form {
     visibility: hidden;
     position: absolute;
@@ -300,15 +316,20 @@ form {
     flex-flow: column nowrap;
     align-items: center;
     gap: 1rem;
+
+    box-shadow: 0 0 1em .25em var(--glow-color),
+    0 0 4em 1em var(--glow-spread-color),
+    inset 0 0 .75em .25em var(--glow-color);
 }
 
 form > div:first-child {
     font-weight: bold;
-    font-size: 2.5rem;
+    font-size: 2.75rem;
     text-align: center;
     padding: 1rem;
     font-family: 'Nova Flat';
     color: white;
+    margin-top: 10px;
 }
 
 form > * {
@@ -331,21 +352,23 @@ input[type='text'] {
     background-color: rgba(55, 55, 55, .95);
     color: whitesmoke;
     border: 0;
-    box-shadow: 0 0 3px white,
+    box-shadow: 0 0 2.5px white,
+        0 0 5px 2px azure,
      inset 0 0 2px black, 7px 7px 10px #151515,
      -7px -7px 10px #313131;
 }
 
 input[type='text']:focus {
-    outline: 2px azure groove;
-    box-shadow: 0 0 5px white,
-    0 0 9px azure;
+    outline: 4px azure groove;
+    box-shadow: inset 0 0 5px white,
+        0 0 8px 5px whitesmoke,
 }
 
 input[type='text']:not(:placeholder-shown) {
-    outline: 2px skyblue groove;
-    box-shadow: 0 0 5px white,
-    0 0 9px lightskyblue;
+    outline: 1.5px var(--glow-color) groove;
+    box-shadow: 0 0 .25em .075em var(--glow-color),
+        0 0 1em .25em var(--glow-spread-color),
+        inset 0 0 .15em .075em var(--glow-color);
     text-shadow: 1px 1px 3px white;
 }
 
@@ -426,4 +449,50 @@ input[type="checkbox"] {
     text-shadow: 0 0 10px purple;
   }
 
+/* Button glow */
+  .submitBtn {
+    margin-top: 20px;
+    border: .25em solid var(--glow-color);
+    padding: 1em 3em;
+    color: var(--glow-color);
+    font-size: 15px;
+    font-weight: bold;
+    background-color: var(--btn-color);
+    border-radius: 1em;
+    outline: none;
+    box-shadow: 0 0 .5em .125em var(--glow-color),
+        0 0 2em .5em var(--glow-spread-color),
+        inset 0 0 .325em .125em var(--glow-color);
+    text-shadow: 0 0 .25em var(--glow-color);
+    position: relative;
+    transition: all 0.3s;
+   }
+   
+   .submitBtn::after {
+    pointer-events: none;
+    content: "";
+    position: absolute;
+    top: 120%;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: var(--glow-spread-color);
+    filter: blur(1.25em);
+    opacity: .7;
+    /* transform: perspective(1.5em) rotateX(35deg) scale(1, .6); */
+   }
+   
+   .submitBtn:hover {
+    color: var(--btn-color);
+    background-color: var(--glow-color);
+    box-shadow: 0 0 .25em .125em var(--glow-color),
+        0 0 1.5em .75em var(--glow-spread-color),
+        inset 0 0 .325em .125em var(--glow-color);
+   }
+   
+   .submitBtn:active {
+    box-shadow: 0 0 0.6em .25em var(--glow-color),
+           0 0 2.5em 2em var(--glow-spread-color),
+           inset 0 0 .5em .25em var(--glow-color);
+   }
 
