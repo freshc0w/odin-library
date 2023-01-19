@@ -237,6 +237,25 @@ p {
     background: linear-gradient(#32de84, #00AB66)
 }
 
+.closeBtn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    height: 2rem;
+    width: 2rem;
+    font-size: 1.5rem;
+    background-color: rgba(0, 0, 0, 0);
+    border: 0;
+    cursor:pointer;
+    color: white;
+}
+
+.closeBtn:hover {
+    transform: scale(1.2);
+    color: red;
+    font-weight: 1000;
+}
+
 .removeBtn:hover,
 .readBtn:hover {
     outline: 3px azure groove;
@@ -285,35 +304,126 @@ form {
 
 form > div:first-child {
     font-weight: bold;
-    font-size: 2rem;
+    font-size: 2.5rem;
     text-align: center;
     padding: 1rem;
+    font-family: 'Nova Flat';
+    color: white;
 }
 
 form > * {
     width: 80%;
 }
 
+/* extra styling for form aesthetics */
+form {
+    border-radius: 1.5rem;
+    background-color: rgba(35, 35, 35, .95);
+    border: 10px #662d91 groove;
+    outline: 10px #DDA0DD double;
+}
+
+input[type='text'] {
+    border-radius: .5rem;
+    padding: 10px 16px;
+    font-size: 1.4rem;
+    font-family: 'Merienda';
+    background-color: rgba(55, 55, 55, .95);
+    color: whitesmoke;
+    border: 0;
+    box-shadow: 0 0 3px white,
+     inset 0 0 2px black, 7px 7px 10px #151515,
+     -7px -7px 10px #313131;
+}
+
+input[type='text']:focus {
+    outline: 2px azure groove;
+    box-shadow: 0 0 5px white,
+    0 0 9px azure;
+}
+
+input[type='text']:not(:placeholder-shown) {
+    outline: 2px skyblue groove;
+    box-shadow: 0 0 5px white,
+    0 0 9px lightskyblue;
+    text-shadow: 1px 1px 3px white;
+}
+
+input[type='text']:not(:focus):not(:placeholder-shown) {
+    text-shadow: 1px 1px 2px white, 0 0 10px purple;
+    font-size: 1.35rem;
+}
+
+input[type='number'] {
+    font-family: 'Gruppo';
+    width: 70px;
+    height: 70px;
+    margin-top: -8px;
+    border-radius: 11px;
+    border: 0;
+    text-align: center;
+    background: linear-gradient(145deg, #252525, #202020);
+    box-shadow: 7px 7px 10px #151515,
+        -7px -7px 10px #313131;
+    font-size: 2.6rem;
+    color: whitesmoke;
+}
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none;
+}
+input[type="number"]:focus {
+    outline: 2px azure groove;
+    box-shadow: 0 0 7px white,
+    0 0 11px azure;
+}
+
 .read-check {
     display: flex;
+    flex-flow: row-reverse;
     justify-content: center;
+    align-items: center;
     gap: 15px;
+    margin-top: 15px;
 }
+input[type="checkbox"] {
+    appearance: none;
+    background-color: rgb(230, 230, 230);
+    margin: 0;
+    font: inherit;
+    color: purple;
+    width: 1.75em;
+    height: 1.75em;
+    border: 0.25em groove black;
+    border-radius: 0.15em;
+    transform: translateY(-0.075em);
+    display: grid;
+    place-items: center;
+  }
 
-.closeBtn {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    height: 2rem;
-    width: 2rem;
-    font-size: 1.5rem;
-    background-color: rgba(0, 0, 0, 0);
-    border: 0;
-    cursor:pointer;
-}
+  input[type="checkbox"]::before {
+    content: "";
+    width: 1rem;
+    height: 1rem;
+    transform: scale(0);
+    transition: 120ms transform ease-in-out;
+    box-shadow: inset 1em 1em purple;
+    transform-origin: bottom left;
+    clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+  }
+  input[type="checkbox"]:checked::before {
+    transform: scale(1);
+  }
 
-.closeBtn:hover {
-    transform: scale(1.2);
-    color: red;
-}
+  input[type="checkbox"]:checked {
+    transform: scale(1.15);
+    box-shadow: 0 0 5px purple,
+    0 0 9px lightskyblue;
+    border: .15rem rgba(0,0,0,.2) solid;
+  }
+  input[type="checkbox"]:checked + label {
+    transform: scale(1.03);
+    text-shadow: 0 0 10px purple;
+  }
+
 
