@@ -226,6 +226,7 @@ p {
     font-weight: 900;
     font-size: 1rem;
     color: white;
+    border: 1px whitesmoke solid;
 }
 
 .removeBtn {
