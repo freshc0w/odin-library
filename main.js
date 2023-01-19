@@ -124,6 +124,13 @@ addBtn.addEventListener("click", () => {
             elements[i].checked = false;
         }
     }
+
+    // create face-mask
+    const faceMask = document.createElement('div');
+    faceMask.classList.add('face-mask');
+    content.insertBefore(faceMask, form);
+    drawGrid();
+
     form.style.visibility = 'visible';
 });
 
