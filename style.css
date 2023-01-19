@@ -35,13 +35,13 @@ body, html {
 }
 
 .face-mask {
+    visibility: hidden;
     position: absolute;
     top: 0;
     left: 0;
     height: 100%;
     width: 100%;
-    background-color: rgba(0,0,0,0.6);
-    display: none;
+    background-color: rgba(0,0,0,0.5);
 }
 
 .main-container {
@@ -328,7 +328,8 @@ form {
     gap: 1rem;
 
     box-shadow: 0 0 1em .25em var(--glow-color),
-    0 0 4em 1em var(--glow-spread-color),
+    -2em 0 8em 1em var(--glow-spread-color),
+    2em 0 8em 1em var(--glow-spread-color),
     inset 0 0 .75em .25em var(--glow-color);
 }
 
@@ -350,7 +351,7 @@ form > * {
 form {
     border-radius: 1.5rem;
     background-color: rgba(35, 35, 35, .95);
-    border: 10px #662d91 groove;
+    border: 10px #662d91 solid;
     outline: 10px #DDA0DD double;
 }
 
@@ -476,20 +477,6 @@ input[type="checkbox"] {
     text-shadow: 0 0 .25em var(--glow-color);
     position: relative;
     transition: all 0.3s;
-   }
-   
-   .submitBtn::after {
-    pointer-events: none;
-    content: "";
-    position: absolute;
-    top: 120%;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    background-color: var(--glow-spread-color);
-    filter: blur(1.25em);
-    opacity: .7;
-    /* transform: perspective(1.5em) rotateX(35deg) scale(1, .6); */
    }
    
    .submitBtn:hover {
