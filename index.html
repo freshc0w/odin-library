@@ -7,6 +7,8 @@
     <title>Mini Library</title>
     <link rel="stylesheet" href="style.css">
     <link href='https://fonts.googleapis.com/css?family=Gruppo' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Nova Flat' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Merienda' rel='stylesheet'>
     <script src="main.js" defer></script>
 </head>
 <body>
@@ -23,21 +25,23 @@
             <form class="input">
 
                 <!-- Collecting user input. -->
-                <div>Add new book</div>
+                <div>Add New Book</div>
                 <label for="title"></label>
                 <input type="text" placeholder="Title" id="title" name="title" required>
                 <label for="author"></label>
                 <input type="text" placeholder="Author" id="author" name="author" required>
-                <label for="pages"></label>
+                <label style='text-align: center; font-size: 1.8rem; color: white; font-family: Merienda; margin-top: 10px;'
+                    for="pages">Pages</label>
                 <input type="number" placeholder="Pages" id="pages" name="pages" value="0">
                 <div class="read-check">
-                    <label for="read">Have you read it?</label>
                     <input type="checkbox" id="read" name="read">
+                    <label style="font-size: 1.4rem; color: white; font-family: Merienda;" for="read">Have you read it?</label>
                 </div>
                 <input type="submit" class="submitBtn"></button>
                 <button class="closeBtn">X</button>
 
             </form>
+        </div>
     </div>
 </body>
 </html>

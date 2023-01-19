@@ -4,6 +4,10 @@
     --angle: 60deg;
     --formWidth: 450px;
     --formHeight: 600px;
+    --glow-color: rgb(217, 176, 255);
+    --glow-spread-color: rgba(191, 123, 255, 0.781);
+    --enhanced-glow-color: rgb(231, 206, 255);
+    --btn-color: rgb(100, 61, 136);
 }
 
 @font-face {
@@ -28,6 +32,16 @@ body, html {
     display: grid;
     grid-template: 100% / auto;
     place-items: center;
+}
+
+.face-mask {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0,0,0,0.6);
+    display: none;
 }
 
 .main-container {
@@ -160,6 +174,7 @@ body, html {
 }
 
 .content {
+    /* position: relative; */
     max-height: 100%;
     overflow: auto;
     padding: 3.5rem;
@@ -226,6 +241,7 @@ p {
     font-weight: 900;
     font-size: 1rem;
     color: white;
+    border: 1px whitesmoke solid;
 }
 
 .removeBtn {
@@ -234,6 +250,25 @@ p {
 
 .readBtn {
     background: linear-gradient(#32de84, #00AB66)
+}
+
+.closeBtn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    height: 2rem;
+    width: 2rem;
+    font-size: 1.5rem;
+    background-color: rgba(0, 0, 0, 0);
+    border: 0;
+    cursor:pointer;
+    color: white;
+}
+
+.closeBtn:hover {
+    transform: scale(1.2);
+    color: red;
+    font-weight: 1000;
 }
 
 .removeBtn:hover,
@@ -263,7 +298,18 @@ p {
     box-shadow: 0 0 5px whitesmoke;
   }
 
+  
 /* Collect user input  */
+
+#page-mask {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    background-color: rgba(0,0,0,1);
+  }
+
 form {
     visibility: hidden;
     position: absolute;
@@ -280,39 +326,183 @@ form {
     flex-flow: column nowrap;
     align-items: center;
     gap: 1rem;
+
+    box-shadow: 0 0 1em .25em var(--glow-color),
+    0 0 4em 1em var(--glow-spread-color),
+    inset 0 0 .75em .25em var(--glow-color);
 }
 
 form > div:first-child {
     font-weight: bold;
-    font-size: 2rem;
+    font-size: 2.75rem;
     text-align: center;
     padding: 1rem;
+    font-family: 'Nova Flat';
+    color: white;
+    margin-top: 10px;
 }
 
 form > * {
     width: 80%;
 }
 
+/* extra styling for form aesthetics */
+form {
+    border-radius: 1.5rem;
+    background-color: rgba(35, 35, 35, .95);
+    border: 10px #662d91 groove;
+    outline: 10px #DDA0DD double;
+}
+
+input[type='text'] {
+    border-radius: .5rem;
+    padding: 10px 16px;
+    font-size: 1.4rem;
+    font-family: 'Merienda';
+    background-color: rgba(55, 55, 55, .95);
+    color: whitesmoke;
+    border: 0;
+    box-shadow: 0 0 2.5px white,
+        0 0 5px 2px azure,
+     inset 0 0 2px black, 7px 7px 10px #151515,
+     -7px -7px 10px #313131;
+}
+
+input[type='text']:focus {
+    outline: 4px azure groove;
+    box-shadow: inset 0 0 5px white,
+        0 0 8px 5px whitesmoke,
+}
+
+input[type='text']:not(:placeholder-shown) {
+    outline: 1.5px var(--glow-color) groove;
+    box-shadow: 0 0 .25em .075em var(--glow-color),
+        0 0 1em .25em var(--glow-spread-color),
+        inset 0 0 .15em .075em var(--glow-color);
+    text-shadow: 1px 1px 3px white;
+}
+
+input[type='text']:not(:focus):not(:placeholder-shown) {
+    text-shadow: 1px 1px 2px white, 0 0 10px purple;
+    font-size: 1.35rem;
+}
+
+input[type='number'] {
+    font-family: 'Gruppo';
+    width: 70px;
+    height: 70px;
+    margin-top: -8px;
+    border-radius: 11px;
+    border: 0;
+    text-align: center;
+    background: linear-gradient(145deg, #252525, #202020);
+    box-shadow: 7px 7px 10px #151515,
+        -7px -7px 10px #313131;
+    font-size: 2.6rem;
+    color: whitesmoke;
+}
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none;
+}
+input[type="number"]:focus {
+    outline: 2px azure groove;
+    box-shadow: 0 0 7px white,
+    0 0 11px azure;
+}
+
 .read-check {
     display: flex;
+    flex-flow: row-reverse;
     justify-content: center;
+    align-items: center;
     gap: 15px;
+    margin-top: 15px;
 }
+input[type="checkbox"] {
+    appearance: none;
+    background-color: rgb(230, 230, 230);
+    margin: 0;
+    font: inherit;
+    color: purple;
+    width: 1.75em;
+    height: 1.75em;
+    border: 0.25em groove black;
+    border-radius: 0.15em;
+    transform: translateY(-0.075em);
+    display: grid;
+    place-items: center;
+  }
 
-.closeBtn {
+  input[type="checkbox"]::before {
+    content: "";
+    width: 1rem;
+    height: 1rem;
+    transform: scale(0);
+    transition: 120ms transform ease-in-out;
+    box-shadow: inset 1em 1em purple;
+    transform-origin: bottom left;
+    clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+  }
+  input[type="checkbox"]:checked::before {
+    transform: scale(1);
+  }
+
+  input[type="checkbox"]:checked {
+    transform: scale(1.15);
+    box-shadow: 0 0 5px purple,
+    0 0 9px lightskyblue;
+    border: .15rem rgba(0,0,0,.2) solid;
+  }
+  input[type="checkbox"]:checked + label {
+    transform: scale(1.03);
+    text-shadow: 0 0 10px purple;
+  }
+
+/* Button glow */
+  .submitBtn {
+    margin-top: 20px;
+    border: .25em solid var(--glow-color);
+    padding: 1em 3em;
+    color: var(--glow-color);
+    font-size: 15px;
+    font-weight: bold;
+    background-color: var(--btn-color);
+    border-radius: 1em;
+    outline: none;
+    box-shadow: 0 0 .5em .125em var(--glow-color),
+        0 0 2em .5em var(--glow-spread-color),
+        inset 0 0 .325em .125em var(--glow-color);
+    text-shadow: 0 0 .25em var(--glow-color);
+    position: relative;
+    transition: all 0.3s;
+   }
+   
+   .submitBtn::after {
+    pointer-events: none;
+    content: "";
     position: absolute;
-    top: 10px;
-    right: 10px;
-    height: 2rem;
-    width: 2rem;
-    font-size: 1.5rem;
-    background-color: rgba(0, 0, 0, 0);
-    border: 0;
-    cursor:pointer;
-}
-
-.closeBtn:hover {
-    transform: scale(1.2);
-    color: red;
-}
+    top: 120%;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: var(--glow-spread-color);
+    filter: blur(1.25em);
+    opacity: .7;
+    /* transform: perspective(1.5em) rotateX(35deg) scale(1, .6); */
+   }
+   
+   .submitBtn:hover {
+    color: var(--btn-color);
+    background-color: var(--glow-color);
+    box-shadow: 0 0 .25em .125em var(--glow-color),
+        0 0 1.5em .75em var(--glow-spread-color),
+        inset 0 0 .325em .125em var(--glow-color);
+   }
+   
+   .submitBtn:active {
+    box-shadow: 0 0 0.6em .25em var(--glow-color),
+           0 0 2.5em 2em var(--glow-spread-color),
+           inset 0 0 .5em .25em var(--glow-color);
+   }
 
