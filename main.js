@@ -3,6 +3,8 @@ const closeBtn = document.querySelector('.closeBtn');
 const submitBtn = document.querySelector('.submitBtn')
 const content = document.querySelector('.content');
 const form = document.querySelector('.input');
+const faceMask = document.querySelector('.face-mask')
+
 let myLibrary = [];
 
 // function addCard() {
@@ -18,7 +20,7 @@ let myLibrary = [];
 
 function drawGrid() {
     // Clear all cards before drawing grid.
-    while(content.firstChild !== form) {
+    while(content.firstChild !== faceMask) {
         content.removeChild(content.firstChild)
     }
 
@@ -106,6 +108,7 @@ function submitInfo(event) {
     addBookToLibrary(bookTitle, author, pages, read)
     drawGrid();
     form.style.visibility = 'hidden'; 
+    faceMask.style.visibility = 'hidden';
 
     event.preventDefault();
 }
@@ -126,13 +129,16 @@ addBtn.addEventListener("click", () => {
     }
 
     // create face-mask
-    const faceMask = document.createElement('div');
-    faceMask.classList.add('face-mask');
-    content.insertBefore(faceMask, form);
-    drawGrid();
-
+    // const faceMask = document.createElement('div');
+    // faceMask.classList.add('face-mask');
+    // content.insertBefore(faceMask, form);
     form.style.visibility = 'visible';
+    faceMask.style.visibility = 'visible';
 });
+
+function removeFaceMask() {
+    
+}
 
 // Close form
 closeBtn.addEventListener("click",
@@ -140,6 +146,7 @@ closeForm);
 
 function closeForm(event) {
     form.style.visibility = 'hidden';
+    faceMask.style.visibility = 'hidden';
     event.preventDefault();
 }
 addBookToLibrary("Mistborn", "Brandon Sanderson", 550, true)
