@@ -4,10 +4,11 @@
     --angle: 60deg;
     --formWidth: 450px;
     --formHeight: 600px;
-    --glow-color: rgb(217, 176, 255);
-    --glow-spread-color: rgba(191, 123, 255, 0.781);
-    --enhanced-glow-color: rgb(231, 206, 255);
-    --btn-color: rgb(100, 61, 136);
+    /* --glow-color: rgb(217, 176, 255); */
+    --glow-color: #B2FFFF;
+    --glow-spread-color: rgba(123, 202, 255, 0.781);
+    --enhanced-glow-color: rgb(206, 241, 255);
+    --btn-color: rgb(61, 67, 136);
 }
 
 @font-face {
@@ -351,8 +352,8 @@ form > * {
 form {
     border-radius: 1.5rem;
     background-color: rgba(35, 35, 35, .95);
-    border: 10px #662d91 solid;
-    outline: 10px #DDA0DD double;
+    border: 10px #302d91 solid;
+    outline: 10px #B2FFFF double;
 }
 
 input[type='text'] {
@@ -433,6 +434,7 @@ input[type="checkbox"] {
     transform: translateY(-0.075em);
     display: grid;
     place-items: center;
+    cursor: pointer;
   }
 
   input[type="checkbox"]::before {
@@ -476,7 +478,8 @@ input[type="checkbox"] {
         inset 0 0 .325em .125em var(--glow-color);
     text-shadow: 0 0 .25em var(--glow-color);
     position: relative;
-    transition: all 0.3s;
+    transition: all 0.1s;
+    cursor: pointer;
    }
    
    .submitBtn:hover {
