@@ -42,7 +42,7 @@ body, html {
     left: 0;
     height: 100%;
     width: 100%;
-    background-color: rgba(0,0,0,0.5);
+    background-color: rgba(0,0,0,0.55);
 }
 
 .main-container {
@@ -311,6 +311,27 @@ p {
     background-color: rgba(0,0,0,1);
   }
 
+  @keyframes input-shadow {
+    0% {
+        box-shadow: 0 0 .25em .075em var(--glow-color),
+    -.5em 0 2em .25em var(--glow-spread-color),
+    .5em 0 2em .25em var(--glow-spread-color),
+    inset 0 0 .25em .075em var(--glow-color);
+    }
+    50% {
+        box-shadow: 0 0 .5em .25em var(--glow-color),
+    -2em 0 4em 1em var(--glow-spread-color),
+    2em 0 4em 1em var(--glow-spread-color),
+    inset 0 0 .75em .25em var(--glow-color);
+    }
+    100% {
+        box-shadow: 0 0 .25em .075em var(--glow-color),
+    -0.5em 0 2em .25em var(--glow-spread-color),
+     0.5em 0 2em .25em var(--glow-spread-color),
+    inset 0 0 .25em .075em var(--glow-color);
+    }
+ }
+
 form {
     visibility: hidden;
     position: absolute;
@@ -332,6 +353,7 @@ form {
     -2em 0 8em 1em var(--glow-spread-color),
     2em 0 8em 1em var(--glow-spread-color),
     inset 0 0 .75em .25em var(--glow-color);
+    animation:input-shadow ease-in-out 2s infinite;
 }
 
 form > div:first-child {
@@ -463,6 +485,19 @@ input[type="checkbox"] {
   }
 
 /* Button glow */
+/* @keyframes input-shadow {
+    0% {
+        box-shadow: none;
+    }
+    50% {
+        box-shadow: 0 0 .5em .125em var(--glow-color),
+        0 0 2em .5em var(--glow-spread-color),
+        inset 0 0 .325em .125em var(--glow-color);
+    }
+    100% {
+        box-shadow: none;
+    }
+ } */
   .submitBtn {
     margin-top: 20px;
     border: .25em solid var(--glow-color);
